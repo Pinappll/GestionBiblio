@@ -2,6 +2,7 @@
 namespace GestionBiblio\Commands;
 
 use GestionBiblio\Services\BookService;
+use GestionBiblio\Services\HistoryService;
 use GestionBiblio\Storage\JsonStorage;
 
 class Menu {
@@ -9,7 +10,9 @@ class Menu {
 
     public function __construct() {
         $storage = new JsonStorage('data/books.json');
-        $this->bookService = new BookService($storage);
+        $service = new HistoryService();
+        
+        $this->bookService = new BookService($storage, $service);
     }
 
     public function showMenu() {

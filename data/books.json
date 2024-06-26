@@ -28,5 +28,11 @@
         "name": "Moby Dick",
         "description": "L'\u00e9pop\u00e9e de la qu\u00eate du capitaine Ahab pour se venger de la baleine blanche Moby Dick.",
         "inStock": false
+    },
+    {
+        "id": "667c2a4ab9bc2",
+        "name": "To Kill a Mockingbird",
+        "description": "Un r\u00e9cit poignant sur l'injustice raciale et la perte de l'innocence dans le Sud des \u00c9tats-Unis.",
+        "inStock": false
     }
 ]
