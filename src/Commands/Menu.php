@@ -1,5 +1,4 @@
 <?php
-
 namespace GestionBiblio\Commands;
 
 use GestionBiblio\Services\BookService;
@@ -28,38 +27,32 @@ class Menu {
             $choice = readline("Enter your choice: ");
             switch ($choice) {
                 case 1:
-                    $name = readline("Enter book name: ");
-                    $description = readline("Enter book description: ");
-                    $inStock = readline("Is the book in stock (yes/no)? ") === 'yes';
-                    $this->bookService->createBook($name, $description, $inStock);
+                    $createBookCommand = new CreateBook($this->bookService);
+                    $createBookCommand->execute();
                     break;
                 case 2:
-                    $id = readline("Enter book ID to update: ");
-                    $name = readline("Enter new book name: ");
-                    $description = readline("Enter new book description: ");
-                    $inStock = readline("Is the book in stock (yes/no)? ") === 'yes';
-                    $this->bookService->updateBook($id, $name, $description, $inStock);
+                    $updateBookCommand = new UpdateBook($this->bookService);
+                    $updateBookCommand->execute();
                     break;
                 case 3:
-                    $id = readline("Enter book ID to delete: ");
-                    $this->bookService->deleteBook($id);
+                    $deleteBookCommand = new DeleteBook($this->bookService);
+                    $deleteBookCommand->execute();
                     break;
                 case 4:
-                    $this->bookService->listBooks();
+                    $listBooksCommand = new ListBooks($this->bookService);
+                    $listBooksCommand->execute();
                     break;
                 case 5:
-                    $id = readline("Enter book ID to show: ");
-                    $this->bookService->showBook($id);
+                    $showBookCommand = new ShowBook($this->bookService);
+                    $showBookCommand->execute();
                     break;
                 case 6:
-                    $key = readline("Enter the field to sort by (name, description, inStock): ");
-                    $order = readline("Enter the order (asc/desc): ");
-                    $this->bookService->sortBooks($key, $order);
+                    $sortBooksCommand = new SortBooks($this->bookService);
+                    $sortBooksCommand->execute();
                     break;
                 case 7:
-                    $key = readline("Enter the field to search by (name, description, inStock, id): ");
-                    $value = readline("Enter the value to search: ");
-                    $this->bookService->searchBook($key, $value);
+                    $searchBookCommand = new SearchBook($this->bookService);
+                    $searchBookCommand->execute();
                     break;
                 case 8:
                     exit("Goodbye!\n");

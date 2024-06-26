@@ -3,6 +3,7 @@
 namespace GestionBiblio\Services;
 
 use GestionBiblio\Storage\BookStorage;
+use GestionBiblio\Models\Book;
 
 class BookService {
     private $bookStorage;
@@ -13,10 +14,26 @@ class BookService {
 
     public function createBook($name, $description, $inStock) {
         $id = uniqid();
-        $book = new \LibraryManagement\Models\Book($id, $name, $description, $inStock);
+        $book = new Book($id, $name, $description, $inStock);
         $this->bookStorage->saveBook($book);
         // Log history...
     }
 
-    // Other methods for update, delete, list, show, sort, and search...
+    public function updateBook(Book $book) {
+        $this->bookStorage->updateBook($book);
+        // Log history...
+    }
+
+    public function deleteBook($id) {
+        $this->bookStorage->deleteBook($id);
+        // Log history...
+    }
+
+    public function getBook($id) {
+        return $this->bookStorage->getBook($id);
+    }
+
+    public function loadBooks() {
+        return $this->bookStorage->loadBooks();
+    }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace GestionBiblio\Models;
 
 class Book {
@@ -14,8 +13,6 @@ class Book {
         $this->description = $description;
         $this->inStock = $inStock;
     }
-
-    // Getters and setters...
 
     public function getId() {
         return $this->id;
