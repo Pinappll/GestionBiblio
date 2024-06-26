@@ -12,12 +12,6 @@
         "inStock": false
     },
     {
-        "id": "667c0a89a1719",
-        "name": "To Kill a Mockingbird",
-        "description": "Un r\u00e9cit poignant sur l'injustice raciale et la perte de l'innocence dans le Sud des \u00c9tats-Unis.",
-        "inStock": false
-    },
-    {
         "id": "667c0aa321857",
         "name": "The Great Gatsby",
         "description": "Une critique du r\u00eave am\u00e9ricain \u00e0 travers la vie extravagante et tragique de Jay Gatsby.",
