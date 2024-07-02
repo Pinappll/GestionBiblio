@@ -1,0 +1,11 @@
+{
+    "name": "jgran/gestion-biblio",
+    "description": "Un système de gestion de bibliothèque en ligne de commande.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "GestionBiblio\\": "src/"
+        }
+    },
+    "require": {}
+}

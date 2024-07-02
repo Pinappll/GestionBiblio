@@ -1,0 +1,38 @@
+[
+    {
+        "id": "667c0998f1bcc",
+        "name": "Les mis\u00e9rables",
+        "description": "Un vaste tableau de la soci\u00e9t\u00e9 fran\u00e7aise au d\u00e9but du XIXe si\u00e8cle, centr\u00e9 sur la r\u00e9demption de Jean Valjean.",
+        "inStock": true
+    },
+    {
+        "id": "667c0a6da8b42",
+        "name": "Le Petit Prince",
+        "description": "Un conte philosophique qui explore l'amour, l'amiti\u00e9 et le sens de la vie \u00e0 travers les yeux d'un petit prince.",
+        "inStock": false
+    },
+    {
+        "id": "667c0aa321857",
+        "name": "The Great Gatsby",
+        "description": "Une critique du r\u00eave am\u00e9ricain \u00e0 travers la vie extravagante et tragique de Jay Gatsby.",
+        "inStock": false
+    },
+    {
+        "id": "667c0ab88a07c",
+        "name": "Harry Potter \u00e0 l'\u00e9cole des sorciers",
+        "description": "L'histoire d'un jeune gar\u00e7on qui d\u00e9couvre qu'il est un sorcier et fr\u00e9quente une \u00e9cole de magie.",
+        "inStock": false
+    },
+    {
+        "id": "667c0ac926f77",
+        "name": "Moby Dick",
+        "description": "L'\u00e9pop\u00e9e de la qu\u00eate du capitaine Ahab pour se venger de la baleine blanche Moby Dick.",
+        "inStock": false
+    },
+    {
+        "id": "667c2a4ab9bc2",
+        "name": "To Kill a Mockingbird",
+        "description": "Un r\u00e9cit poignant sur l'injustice raciale et la perte de l'innocence dans le Sud des \u00c9tats-Unis.",
+        "inStock": false
+    }
+]
