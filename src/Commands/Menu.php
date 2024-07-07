@@ -5,9 +5,16 @@ use GestionBiblio\Services\BookService;
 use GestionBiblio\Services\HistoryService;
 use GestionBiblio\Storage\JsonStorage;
 
+/**
+ * La classe Menu représente le menu principal du système de gestion de bibliothèque.
+ */
 class Menu {
     private $bookService;
 
+    /**
+     * Constructeur de la classe Menu.
+     * Initialise le service de gestion des livres avec le stockage JSON et le service d'historique.
+     */
     public function __construct() {
         $storage = new JsonStorage('data/books.json');
         $service = new HistoryService();
@@ -15,19 +22,22 @@ class Menu {
         $this->bookService = new BookService($storage, $service);
     }
 
+    /**
+     * Affiche le menu principal et gère les choix de l'utilisateur.
+     */
     public function showMenu() {
         while (true) {
-            echo "Library Management System\n";
-            echo "1. Add Book\n";
-            echo "2. Update Book\n";
-            echo "3. Delete Book\n";
-            echo "4. List Books\n";
-            echo "5. Show Book\n";
-            echo "6. Sort Books\n";
-            echo "7. Search Book\n";
-            echo "8. Exit\n";
+            echo "Système de Gestion de Bibliothèque\n";
+            echo "1. Ajouter un livre\n";
+            echo "2. Mettre à jour un livre\n";
+            echo "3. Supprimer un livre\n";
+            echo "4. Liste des livres\n";
+            echo "5. Afficher un livre\n";
+            echo "6. Trier les livres\n";
+            echo "7. Rechercher un livre\n";
+            echo "8. Quitter\n";
 
-            $choice = readline("Enter your choice: ");
+            $choice = readline("Entrez votre choix : ");
             switch ($choice) {
                 case 1:
                     $createBookCommand = new CreateBook($this->bookService);
@@ -58,9 +68,9 @@ class Menu {
                     $searchBookCommand->execute();
                     break;
                 case 8:
-                    exit("Goodbye!\n");
+                    exit("Au revoir !\n");
                 default:
-                    echo "Invalid choice, please try again.\n";
+                    echo "Choix invalide, veuillez réessayer.\n";
             }
         }
     }

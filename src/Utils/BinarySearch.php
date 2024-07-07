@@ -2,7 +2,20 @@
 
 namespace GestionBiblio\Utils;
 
+/**
+ * Classe BinarySearch
+ * 
+ * Cette classe implémente l'algorithme de recherche binaire pour rechercher des livres dans un tableau donné.
+ */
 class BinarySearch {
+    /**
+     * Recherche les livres correspondant au terme de recherche dans le tableau donné.
+     * 
+     * @param array $books Le tableau de livres dans lequel effectuer la recherche.
+     * @param string $column La colonne sur laquelle effectuer la recherche (id, name, description, inStock).
+     * @param string $searchTerm Le terme de recherche.
+     * @return array Les livres correspondant au terme de recherche.
+     */
     public static function search(array $books, string $column, string $searchTerm) {
         $left = 0;
         $right = count($books) - 1;
@@ -41,6 +54,13 @@ class BinarySearch {
         return $foundBooks;
     }
 
+    /**
+     * Récupère la valeur de la colonne spécifiée pour un livre donné.
+     * 
+     * @param mixed $book Le livre pour lequel récupérer la valeur de la colonne.
+     * @param string $column La colonne dont récupérer la valeur (id, name, description, inStock).
+     * @return string La valeur de la colonne pour le livre donné.
+     */
     private static function getBookColumnValue($book, $column) {
         switch ($column) {
             case 'id':

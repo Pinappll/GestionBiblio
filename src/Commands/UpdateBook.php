@@ -2,30 +2,41 @@
 namespace GestionBiblio\Commands;
 use GestionBiblio\Services\BookService;
 
+/**
+ * La classe UpdateBook représente une commande pour mettre à jour un livre.
+ */
 class UpdateBook {
     private $bookService;
 
+    /**
+     * Constructeur de la classe UpdateBook.
+     *
+     * @param BookService $bookService Le service de gestion des livres.
+     */
     public function __construct(BookService $bookService) {
         $this->bookService = $bookService;
     }
 
+    /**
+     * Exécute la commande de mise à jour d'un livre.
+     */
     public function execute() {
-        echo "Updating a book...\n";
-        $bookId = readline("Enter the book ID: ");
+        echo "Mise à jour d'un livre...\n";
+        $bookId = readline("Entrez l'ID du livre : ");
         $book = $this->bookService->getBook($bookId);
 
         if ($book === null) {
-            echo "No book found with ID: $bookId\n";
+            echo "Aucun livre trouvé avec l'ID : $bookId\n";
             return;
         }
 
-        echo "Current Name: " . $book->getName() . "\n";
-        echo "Current Description: " . $book->getDescription() . "\n";
-        echo "Current In Stock: " . ($book->isInStock() ? "Yes" : "No") . "\n";
+        echo "Nom actuel : " . $book->getName() . "\n";
+        echo "Description actuelle : " . $book->getDescription() . "\n";
+        echo "En stock actuellement : " . ($book->isInStock() ? "Oui" : "Non") . "\n";
 
-        $name = readline("Enter new book name (press enter to skip): ");
-        $description = readline("Enter new book description (press enter to skip): ");
-        $inStock = readline("Is the book in stock? (yes/no/press enter to skip): ");
+        $name = readline("Entrez le nouveau nom du livre (appuyez sur Entrée pour ignorer) : ");
+        $description = readline("Entrez la nouvelle description du livre (appuyez sur Entrée pour ignorer) : ");
+        $inStock = readline("Le livre est-il en stock ? (oui/non/appuyez sur Entrée pour ignorer) : ");
 
         if (!empty($name)) {
             $book->setName($name);
@@ -33,11 +44,11 @@ class UpdateBook {
         if (!empty($description)) {
             $book->setDescription($description);
         }
-        if (strtolower($inStock) === 'yes' || strtolower($inStock) === 'no') {
-            $book->setInStock(strtolower($inStock) === 'yes');
+        if (strtolower($inStock) === 'oui' || strtolower($inStock) === 'non') {
+            $book->setInStock(strtolower($inStock) === 'oui');
         }
 
         $this->bookService->updateBook($book);
-        echo "Book updated successfully.\n";
+        echo "Livre mis à jour avec succès.\n";
     }
 }
