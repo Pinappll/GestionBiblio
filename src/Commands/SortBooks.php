@@ -6,13 +6,26 @@ use GestionBiblio\Services\BookService;
 use GestionBiblio\Utils\MergeSort;
 use GestionBiblio\Utils\QuickSort;
 
+/**
+ * Classe SortBooks
+ * 
+ * Cette classe représente une commande de tri des livres.
+ */
 class SortBooks {
     private $bookService;
 
+    /**
+     * Constructeur de la classe SortBooks.
+     * 
+     * @param BookService $bookService Le service de gestion des livres.
+     */
     public function __construct(BookService $bookService) {
         $this->bookService = $bookService;
     }
 
+    /**
+     * Exécute la commande de tri des livres.
+     */
     public function execute() {
         echo "Tri des livres...\n";
         $input = readline("Entrez la méthode de tri (merge/quick) [colonne] [ordre] (asc/desc) : ");
@@ -49,6 +62,16 @@ class SortBooks {
         }
     }
 
+    /**
+     * Trie les livres selon la méthode, la colonne et l'ordre spécifiés.
+     * 
+     * @param array $books Les livres à trier.
+     * @param string $method La méthode de tri (merge/quick).
+     * @param string $column La colonne de tri (name/description/inStock).
+     * @param bool $ascending L'ordre de tri (true pour ascendant, false pour descendant).
+     * 
+     * @return array|null Les livres triés ou null en cas d'erreur.
+     */
     private function sortBooks($books, $method, $column, $ascending) {
         $validColumns = ['name', 'description', 'inStock'];
         if (!in_array($column, $validColumns)) {
