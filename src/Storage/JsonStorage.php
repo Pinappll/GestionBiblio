@@ -4,13 +4,28 @@ namespace GestionBiblio\Storage;
 
 use GestionBiblio\Models\Book;
 
+/**
+ * Classe JsonStorage
+ * 
+ * Cette classe est responsable de la gestion du stockage des livres en utilisant un fichier JSON.
+ */
 class JsonStorage implements BookStorage {
     private $filePath;
 
+    /**
+     * Constructeur de la classe JsonStorage
+     * 
+     * @param string $filePath Le chemin du fichier JSON de stockage des livres.
+     */
     public function __construct($filePath) {
         $this->filePath = $filePath;
     }
 
+    /**
+     * Charge les livres à partir du fichier JSON de stockage.
+     * 
+     * @return array Un tableau contenant les livres chargés.
+     */
     public function loadBooks() {
         if (!file_exists($this->filePath)) {
             return [];
@@ -24,12 +39,24 @@ class JsonStorage implements BookStorage {
         return $books;
     }
 
+    /**
+     * Enregistre un livre dans le fichier JSON de stockage.
+     * 
+     * @param Book $book Le livre à enregistrer.
+     * @return void
+     */
     public function saveBook(Book $book) {
         $books = $this->loadBooks();
         $books[] = $book;
         $this->saveBooks($books);
     }
 
+    /**
+     * Met à jour un livre dans le fichier JSON de stockage.
+     * 
+     * @param Book $book Le livre à mettre à jour.
+     * @return void
+     */
     public function updateBook(Book $book) {
         $books = $this->loadBooks();
         foreach ($books as &$b) {
@@ -41,6 +68,12 @@ class JsonStorage implements BookStorage {
         $this->saveBooks($books);
     }
 
+    /**
+     * Supprime un livre du fichier JSON de stockage.
+     * 
+     * @param int $id L'identifiant du livre à supprimer.
+     * @return void
+     */
     public function deleteBook($id) {
         $books = $this->loadBooks();
         foreach ($books as $key => $book) {
@@ -52,6 +85,12 @@ class JsonStorage implements BookStorage {
         $this->saveBooks($books);
     }
 
+    /**
+     * Récupère un livre à partir de son identifiant dans le fichier JSON de stockage.
+     * 
+     * @param int $id L'identifiant du livre à récupérer.
+     * @return Book|null Le livre correspondant à l'identifiant, ou null si aucun livre n'est trouvé.
+     */
     public function getBook($id) {
         $books = $this->loadBooks();
         foreach ($books as $book) {
@@ -62,6 +101,12 @@ class JsonStorage implements BookStorage {
         return null;
     }
 
+    /**
+     * Enregistre les livres dans le fichier JSON de stockage.
+     * 
+     * @param array $books Le tableau contenant les livres à enregistrer.
+     * @return void
+     */
     private function saveBooks($books) {
         $data = [];
         foreach ($books as $book) {
