@@ -37,7 +37,7 @@ class SearchBook {
         $foundBooks = $this->binarySearch($books, $column, $searchTerm);
 
         if (empty($foundBooks)) {
-            echo "Aucun livre trouvé correspondant à votre recherche.\n";
+            echo "No books found matching your search.\n";
             return;
         }
 
